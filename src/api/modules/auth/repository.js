@@ -12,6 +12,7 @@ export default class UserRepository extends Repository {
   }
 
   getOneUserAndRole(condition = {}, fields = ['*']) {
+    console.log(condition);
     return this.model
       .query()
       .findOne(condition)

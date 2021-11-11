@@ -33,20 +33,18 @@ export default class UserService extends Service {
       {
         email
       },
-      ['id', 'fullName', 'email', 'password', 'role']
+      ['id', 'fullName', 'email', 'password', 'role', 'avatar']
     );
     if (!user || !bcrypt.compareSync(password, user.password)) {
-      throw Boom.badRequest('INVALID_EMAIL_PASSWORD');
+      throw Boom.badRequest(errors.INCORRECT_EMAIL_PASSWORD);
     }
-    return _.assign(
-      {
-        token: JWT.issue({
-          id: user.id,
-          scope: user.role
-        })
-      },
+    return {
+      token: JWT.issue({
+        id: user.id,
+        scope: user.role
+      }),
       user
-    );
+    };
   }
 
   async signUp(payload) {
@@ -55,7 +53,7 @@ export default class UserService extends Service {
       .where('email', email)
       .first();
     if (user) {
-      throw Boom.badRequest(ErrorsHandler(errors.ALREADY_EXISTED, { key: 'Email' }));
+      throw Boom.badRequest(ErrorsHandler(errors.ALREADY_EXISTED, { KEY: 'EMAIL' }));
     }
     await User.query().insert(payload);
     return {

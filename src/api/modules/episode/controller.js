@@ -1,4 +1,12 @@
-export default class Controller {
+import Controller from '../../core/Controller';
+import EpisodeService from './service';
+
+export default class EpisodeController extends Controller {
+  constructor() {
+    super();
+    this.service = EpisodeService.getService();
+  }
+
   getMany(request) {
     return this.service.getMany(request.query);
   }
@@ -9,8 +17,13 @@ export default class Controller {
   }
 
   createOne(request) {
-    const { payload } = request;
-    return this.service.createOne(payload);
+    const {
+      auth: {
+        credentials: { id: userId }
+      },
+      payload
+    } = request;
+    return this.service.createOne(userId, payload);
   }
 
   updateOne(request) {
@@ -22,18 +35,5 @@ export default class Controller {
   deleteOne(request) {
     const { id } = request.params;
     return this.service.deleteOne(id);
-  }
-
-  deleteMultiple(request) {
-    const { ids } = request.payload;
-    return this.service.deleteMultiple(ids);
-  }
-
-  getCredentialInfo(request) {
-    if (request.auth.isAuthenticated) {
-      const { id: userId, scope } = request.auth.credentials;
-      return { userId, scope };
-    }
-    return { userId: null, scope: null };
   }
 }

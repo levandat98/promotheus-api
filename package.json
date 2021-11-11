@@ -1,10 +1,10 @@
 {
-  "name": "Hapi-API-ES6",
+  "name": "Promotheus-API",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "keywords": [],
-  "author": "",
+  "author": "this.lvd",
   "license": "ISC",
   "scripts": {
     "dev": "nodemon --exec ./node_modules/.bin/babel-node ./src/index",

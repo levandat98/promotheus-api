@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import Configs from '../../configs/index';
-import logger from '../../utils/Winston';
+import Configs from '../../../configs/index';
+import logger from '../../../utils/Winston';
 
 const dbConfigs = Configs.getMongoDBConfigs();
 
