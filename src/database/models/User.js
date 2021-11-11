@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import Series from './Serie';
 
 export default class User extends BaseModel {
   static $hidden = ['password'];
@@ -12,6 +13,23 @@ export default class User extends BaseModel {
   }
 
   static get relationMappings() {
-    return {};
+    return {
+      series: {
+        relation: BaseModel.HasManyRelation,
+        modelClass: Series,
+        join: {
+          from: 'users.id',
+          to: 'series.creatorId'
+        }
+      },
+      episodes: {
+        relation: BaseModel.HasManyRelation,
+        modelClass: Series,
+        join: {
+          from: 'users.id',
+          to: 'series.creatorId'
+        }
+      }
+    };
   }
 }

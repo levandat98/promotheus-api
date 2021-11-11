@@ -3,4 +3,11 @@ const gender = {
   FEMALE: 'FEMALE',
   OTHER: 'OTHER'
 };
-export { gender };
+const gerne = {
+  EPISODE_FOR_YOU:"Episode for you",
+  NEW_RELEASEl: "New release",
+  SERIES_YOU_MIGHT_LIKE: "Series you migth like",
+  RECENTLY_PLAYER: "Recently player",
+  SUGGESTED_CREATOR: "Suggested creator"
+}
+export { gender, gerne };

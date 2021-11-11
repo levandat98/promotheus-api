@@ -19,7 +19,6 @@ export default class Validator {
     fields: Joi.array()
   });
 
-  
   queryParamsAllowedAll = Joi.object({
     limit: Joi.number()
       .integer()
