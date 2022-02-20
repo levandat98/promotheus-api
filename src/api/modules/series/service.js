@@ -24,7 +24,8 @@ export default class SerieService extends Service {
   }
 
   async getOne(id) {
-    const Serie = await this.repository.getOneWithLesson(id);
+    const Serie = await this.repository.getById(id, ['*'], ['episodes', 'creator']);
+
     if (!Serie) {
       throw Boom.notFound(ErrorsHandler(errors.NOT_FOUND, { KEY: 'Serie' }));
     }

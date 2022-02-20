@@ -1,5 +1,7 @@
+/* eslint-disable import/no-cycle */
 import BaseModel from './BaseModel';
 import Series from './Serie';
+import Episode from './Episode';
 
 export default class User extends BaseModel {
   static $hidden = ['password'];
@@ -24,10 +26,10 @@ export default class User extends BaseModel {
       },
       episodes: {
         relation: BaseModel.HasManyRelation,
-        modelClass: Series,
+        modelClass: Episode,
         join: {
           from: 'users.id',
-          to: 'series.creatorId'
+          to: 'episodes.creatorId'
         }
       }
     };

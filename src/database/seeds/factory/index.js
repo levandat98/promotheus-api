@@ -6,6 +6,7 @@ import ROLES from '../../../constants/roles';
 import User from '../../models/User';
 import Serie from '../../models/Serie';
 import Genre from '../../models/Genre';
+import Episode from '../../models/Episode';
 
 class Factory {
   static users(number) {
@@ -59,7 +60,7 @@ class Factory {
       const number = _.random(4, 8);
       const serieId = _.sample(series);
       for (let n = 0; n < number; n += 1) {
-        data.push(sample.createEpisodes(series.creatorId, series.id));
+        data.push(sample.createEpisodes(series[i].creatorId, series[i].id));
         _.remove(series, x => x.id === serieId);
       }
     }
@@ -105,7 +106,21 @@ class Factory {
         data.push(sample.createGenreSeries(series[i], _.sample(genres)));
       }
     }
-    console.log(data);
+    return data;
+  }
+
+  static async Queue() {
+    const data = [];
+    const users = (await User.query().select(['id'])).map(x => x.id);
+    const episodes = (await Episode.query().select(['id'])).map(x => x.id);
+    for (let i = 0; i < users.length; i += 1) {
+      for (let j = 0; j < 4; j += 1) {
+        data.push({
+          userId: users[i],
+          episodeId: _.sample(episodes)
+        });
+      }
+    }
     return data;
   }
 }

@@ -11,4 +11,15 @@ export default class UserController extends Controller {
     const { id } = request.auth.credentials;
     return this.service.getOne(id);
   }
+
+  getQueue(request) {
+    const { id } = request.auth.credentials;
+    return this.service.getQueue(id);
+  }
+
+  pushToQueue(request) {
+    const userId = request.auth.credentials.id;
+    const { id } = request.params;
+    return this.service.pushToQueue(userId, id);
+  }
 }

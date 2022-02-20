@@ -1,6 +1,7 @@
 import faker from 'faker';
 import _ from 'lodash';
 import bcrypt from '../../../services/Bcrypt';
+import { coverImg } from './dataset';
 
 class Sample {
   createUsers = role => ({
@@ -8,8 +9,8 @@ class Sample {
     email: faker.internet.email(),
     password: bcrypt.hashSync('123456'),
     role,
-    avatar:
-      'https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.18169-9/16386918_405950986409159_6630163381916049827_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=PK7XPWJxWN8AX-r3qg8&tn=DxFuXgC0zSZlfkDA&_nc_ht=scontent.fsgn2-6.fna&oh=4491ae8cd7d72d2550dfd874686bc76c&oe=61B761A3'
+    avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200',
+    bio: faker.lorem.lines(8)
   });
 
   createSeries = creatorId => ({
@@ -21,9 +22,14 @@ class Sample {
   });
 
   createEpisodes = (creatorId, serieId) => ({
-    name: faker.commerce.productName(),
-    description: faker.lorem.lines(2),
+    name: faker.lorem.lines(1),
+    description: faker.lorem.lines(6),
     releaseDate: faker.date.past(),
+    audioLength: _.random(60, 1000),
+    img: _.sample(coverImg),
+    cover: _.sample(coverImg),
+    source: 'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/2.mp3',
+    url: 'https://www.youtube.com/watch?v=Lin-a2lTelg',
     creatorId,
     serieId
   });

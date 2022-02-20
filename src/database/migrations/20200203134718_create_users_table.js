@@ -7,18 +7,13 @@ export const up = async knex =>
     table.string('email').unique();
     table.string('password');
     table.enu('role', [...Object.values(roles)]);
-    table.string('bio');
+    table.string('bio', 3000);
     table.string('fullName');
     table.text('avatar');
     table.string('location');
     table.enu('gender', [...Object.values(gender)]);
     table.timestamp('birthDay');
     table.string('phoneNumber').unique();
-    table.integer('userId');
-    table
-      .foreign('userId')
-      .references('users.id')
-      .onDelete('CASCADE');
     table.timestamp('createdAt').defaultTo(knex.fn.now());
     table.timestamp('updatedAt').defaultTo(knex.fn.now());
     table.timestamp('deletedAt').defaultTo(null);

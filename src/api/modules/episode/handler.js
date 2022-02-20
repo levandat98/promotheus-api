@@ -23,6 +23,17 @@ class EpisodeHandler {
     }
   });
 
+  getHomeEpisode = () => ({
+    tags: ['api', 'v1'],
+    description: 'Get all Episode for home',
+    notes: 'Return all Episodes for home',
+    handler: this.controller.getHomeEpisode,
+    auth: {
+      strategy: 'jwt',
+      scope: [roles.USER]
+    }
+  });
+
   getOne = () => ({
     tags: ['api', 'v1'],
     description: 'Get one Episode',

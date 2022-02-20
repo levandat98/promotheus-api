@@ -30,6 +30,22 @@ class UserHandler {
     handler: this.controller.getMe,
     auth: 'jwt'
   });
+
+  getQueue = () => ({
+    tags: ['api', 'v1'],
+    description: 'Get queue of user',
+    notes: 'Return all queue users',
+    handler: this.controller.getQueue,
+    auth: 'jwt'
+  });
+
+  pushToQueue = () => ({
+    tags: ['api', 'v1'],
+    description: 'push to  queue of user',
+    notes: 'Return push to all queue users',
+    handler: this.controller.pushToQueue,
+    auth: 'jwt'
+  });
 }
 
 export default UserHandler;

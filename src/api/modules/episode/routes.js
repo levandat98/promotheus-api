@@ -33,6 +33,11 @@ export default class EpisodeRoutes {
         method: 'PUT',
         path: '/api/v1/episodes/{id}',
         options: this.handler.updateOne
+      },
+      {
+        method: 'GET',
+        path: '/api/v1/episodes/home',
+        options: this.handler.getHomeEpisode
       }
     ];
     return routes;

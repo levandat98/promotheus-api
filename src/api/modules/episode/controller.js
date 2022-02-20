@@ -11,6 +11,15 @@ export default class EpisodeController extends Controller {
     return this.service.getMany(request.query);
   }
 
+  getHomeEpisode(request) {
+    const {
+      auth: {
+        credentials: { id: userId }
+      }
+    } = request;
+    return this.service.getHomeEpisode(userId);
+  }
+
   getOne(request) {
     const { id } = request.params;
     return this.service.getOne(id);

@@ -2,9 +2,13 @@ export const up = async knex =>
   knex.schema.createTable('episodes', table => {
     table.increments('id').primary();
     table.string('name');
-    table.string('description');
+    table.string('description', 3000);
     table.timestamp('releaseDate');
     table.string('url');
+    table.string('cover');
+    table.string('img');
+    table.integer('audioLength'); // unit = seconds
+    table.string('source');
     table.integer('serieId');
     table
       .foreign('serieId')

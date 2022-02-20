@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
-import Lesson from './Episode';
+import Episode from './Episode';
+import User from './User';
 
 export default class Serie extends BaseModel {
   static get tableName() {
@@ -22,10 +23,18 @@ export default class Serie extends BaseModel {
     return {
       episodes: {
         relation: BaseModel.HasManyRelation,
-        modelClass: Lesson,
+        modelClass: Episode,
         join: {
           from: 'series.id',
           to: 'episodes.serieId'
+        }
+      },
+      creator: {
+        relation: BaseModel.HasOneRelation,
+        modelClass: User,
+        join: {
+          from: 'series.creatorId',
+          to: 'users.id'
         }
       }
     };

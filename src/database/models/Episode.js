@@ -1,4 +1,6 @@
 import BaseModel from './BaseModel';
+// eslint-disable-next-line import/no-cycle
+import User from './User';
 
 export default class Episode extends BaseModel {
   static get tableName() {
@@ -18,6 +20,15 @@ export default class Episode extends BaseModel {
   }
 
   static get relationMappings() {
-    return {};
+    return {
+      creator: {
+        relation: BaseModel.HasOneRelation,
+        modelClass: User,
+        join: {
+          from: 'episodes.creatorId',
+          to: 'users.id'
+        }
+      }
+    };
   }
 }
