@@ -18,6 +18,16 @@ export default class UserRoutes {
         method: 'GET',
         path: '/api/v1/users/me',
         options: this.handler.getMe
+      },
+      {
+        method: 'GET',
+        path: '/api/v1/users/queue',
+        options: this.handler.getQueue
+      },
+      {
+        method: 'POST',
+        path: '/api/v1/users/queue/{id}',
+        options: this.handler.pushToQueue
       }
     ];
     return routes;

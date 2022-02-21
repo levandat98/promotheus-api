@@ -17,7 +17,7 @@ export default class UserValidator extends Validator {
       .max(16)
       .required(),
     name: Joi.string().required(),
-    age: Joi.date().required(),
+    birthday: Joi.date(),
     gender: Joi.string().valid(...Object.values(gender))
   });
 }
