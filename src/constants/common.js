@@ -10,4 +10,8 @@ const gerne = {
   RECENTLY_PLAYER: 'Recently player',
   SUGGESTED_CREATOR: 'Suggested creator'
 };
-export { gender, gerne };
+const reactionType = {
+  LIKE: 'LIKE',
+  DISLIKE: 'DISLIKE'
+};
+export { gender, gerne, reactionType };

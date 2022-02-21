@@ -2,6 +2,7 @@
 import BaseModel from './BaseModel';
 import Series from './Serie';
 import Episode from './Episode';
+import Favorites from './Favotite';
 
 export default class User extends BaseModel {
   static $hidden = ['password'];
@@ -30,6 +31,14 @@ export default class User extends BaseModel {
         join: {
           from: 'users.id',
           to: 'episodes.creatorId'
+        }
+      },
+      favorites: {
+        relation: BaseModel.HasManyRelation,
+        modelClass: Favorites,
+        join: {
+          from: 'users.id',
+          to: 'favorites.creatorId'
         }
       }
     };
