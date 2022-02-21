@@ -23,6 +23,20 @@ class EpisodeHandler {
     }
   });
 
+  getManyOfUser = () => ({
+    tags: ['api', 'v1'],
+    description: 'Get all Episode',
+    notes: 'Return all Episodes',
+    handler: this.controller.getManyOfUser,
+    validate: {
+      query: this.validator.queryParams
+    },
+    auth: {
+      strategy: 'jwt',
+      scope: [roles.USER]
+    }
+  });
+
   getHomeEpisode = () => ({
     tags: ['api', 'v1'],
     description: 'Get all Episode for home',

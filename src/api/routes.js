@@ -4,6 +4,7 @@ import AuthRoutes from './modules/auth/routes';
 import EpisodeRoutes from './modules/episode/routes';
 import SeriesRoutes from './modules/series/routes';
 import CreatorRoutes from './modules/creator/routes';
+import MediaRoutes from './modules/media/routes';
 
 export const bind = server => {
   const routes = [
@@ -11,7 +12,8 @@ export const bind = server => {
     new UserRoutes(server),
     new EpisodeRoutes(server),
     new SeriesRoutes(server),
-    new CreatorRoutes(server)
+    new CreatorRoutes(server),
+    new MediaRoutes(server)
   ];
   return _flattenDeep(routes);
 };

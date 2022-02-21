@@ -15,8 +15,8 @@ class CustomQueryBuilder extends QueryBuilder {
   }
 
   queryBuilder(query) {
-    if (query.page && query.pageSize) {
-      return this.page(query.page, query.pageSize);
+    if (query.page && query.size) {
+      return this.page(query.page, query.size);
     }
 
     return this.page(0, 50);

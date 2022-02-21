@@ -8,7 +8,6 @@ export const up = async knex =>
     table.string('cover');
     table.string('img');
     table.integer('audioLength'); // unit = seconds
-    table.string('source');
     table.integer('serieId');
     table
       .foreign('serieId')

@@ -16,6 +16,11 @@ export default class EpisodeRoutes {
       },
       {
         method: 'GET',
+        path: '/api/v1/episodes/studio',
+        options: this.handler.getManyOfUser
+      },
+      {
+        method: 'GET',
         path: '/api/v1/episodes/{id}',
         options: this.handler.getOne
       },

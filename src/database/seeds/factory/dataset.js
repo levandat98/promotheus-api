@@ -6,4 +6,15 @@ const coverImg = [
   'https://i.scdn.co/image/ab6765630000ba8a3fe088cc6372ebc4d838e3d0',
   'https://i.scdn.co/image/2d5f3d119be783b5cc74f5b205fd9afc6fb112f9'
 ];
-export { coverImg };
+const avatar = [
+  'https://meragor.com/files/styles//220_220_bottom_wm/avatar-221706-067378.png',
+  'https://meragor.com/files/styles//220_220_bottom_wm/avatar-217953-067659.png',
+  'https://meragor.com/files/styles//220_220_bottom_wm/avatar-217886-011623.png',
+  'https://meragor.com/files/styles//220_220_bottom_wm/avatar-219519-033775.png',
+  'https://meragor.com/files/styles//220_220_bottom_wm/standoff_27.jpg',
+  'https://meragor.com/files/styles//220_220/002373.png',
+  'https://meragor.com/files/styles//220_220/1_989.jpeg',
+  'https://meragor.com/files/styles//220_220_bottom_wm/pacany-na-avu-066.jpg',
+  'https://meragor.com/files/styles//220_220/1536578443_19.jpg'
+];
+export { coverImg, avatar };

@@ -44,6 +44,7 @@ export default class Repository {
   }
 
   create(payload) {
+    console.log('>>>>>>>>>>>>>>>', payload);
     return this.model
       .query()
       .insert(payload)

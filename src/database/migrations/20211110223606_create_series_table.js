@@ -3,7 +3,7 @@ export const up = async knex =>
     table.increments('id').primary();
     table.string('name');
     table.string('description');
-    table.float('ratings').default(0);
+    table.float('rating').default(0);
     table.integer('ratingCount');
     table.integer('creatorId');
     table

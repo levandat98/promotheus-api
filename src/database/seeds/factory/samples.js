@@ -1,7 +1,7 @@
 import faker from 'faker';
 import _ from 'lodash';
 import bcrypt from '../../../services/Bcrypt';
-import { coverImg } from './dataset';
+import { coverImg, avatar } from './dataset';
 
 class Sample {
   createUsers = role => ({
@@ -9,7 +9,7 @@ class Sample {
     email: faker.internet.email(),
     password: bcrypt.hashSync('123456'),
     role,
-    avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200',
+    avatar: _.sample(avatar),
     bio: faker.lorem.lines(8)
   });
 

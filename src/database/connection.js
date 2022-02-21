@@ -9,4 +9,15 @@ const environment = process.env.NODE_ENV || 'development';
 const knex = knexFile[environment];
 const connection = Knex(knex);
 
+if (process.env.ENABLE_SQL_LOG) {
+  connection.on('query', query => {
+    // eslint-disable-next-line no-console
+    console.log({
+      bindings: query.bindings,
+      sql: query.sql
+    });
+    // eslint-disable-next-line no-console
+    console.log('-----------------');
+  });
+}
 export default connection;

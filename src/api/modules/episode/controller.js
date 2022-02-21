@@ -11,6 +11,16 @@ export default class EpisodeController extends Controller {
     return this.service.getMany(request.query);
   }
 
+  getManyOfUser(request) {
+    const {
+      auth: {
+        credentials: { id: userId }
+      }
+    } = request;
+    request.query = { ...request.query, creatorId: userId };
+    return this.service.getMany(request.query);
+  }
+
   getHomeEpisode(request) {
     const {
       auth: {
@@ -21,18 +31,24 @@ export default class EpisodeController extends Controller {
   }
 
   getOne(request) {
-    const { id } = request.params;
-    return this.service.getOne(id);
+    const {
+      params: { id },
+      auth: {
+        credentials: { id: userId, scope }
+      }
+    } = request;
+    return this.service.getOne(id, userId, scope);
   }
 
   createOne(request) {
     const {
       auth: {
         credentials: { id: userId }
-      },
-      payload
+      }
     } = request;
-    return this.service.createOne(userId, payload);
+    let { payload } = request;
+    payload = { ...payload, creatorId: userId };
+    return this.service.createOne(payload);
   }
 
   updateOne(request) {

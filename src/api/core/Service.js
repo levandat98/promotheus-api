@@ -19,7 +19,7 @@ export default class Service {
     return result;
   }
 
-  create(data) {
+  createOne(data) {
     return this.repository.create(data);
   }
 

@@ -19,7 +19,6 @@
     "seed:run": "npm run knex seed:run",
     "db:refresh": "npm run migrate:rollback && npm run migrate:latest && npm run seed:run",
     "mongo:seed": "babel-node ./src/database/seeds/mongoInit.js"
-
   },
   "dependencies": {
     "@hapi/boom": "^9.0.0",
@@ -27,6 +26,7 @@
     "@hapi/inert": "5.2.2",
     "@hapi/joi": "^15.1.0",
     "@hapi/vision": "^5.5.4",
+    "aws-sdk": "^2.1082.0",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
@@ -41,6 +41,7 @@
     "objection": "^2.1.2",
     "objection-filter": "github:laptrinhsgroup/objection-filter#eae3f0cd52e165a14a5630ce6a5100c72be407da",
     "pg": "^8.7.1",
+    "slugify": "^1.6.5",
     "winston": "^3.2.1"
   },
   "devDependencies": {

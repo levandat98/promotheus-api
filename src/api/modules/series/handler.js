@@ -17,7 +17,24 @@ class SerieHandler {
     validate: {
       query: this.validator.queryParams
     },
-    auth: false
+    auth: {
+      strategy: 'jwt',
+      scope: [roles.USER, roles.ADMIN]
+    }
+  });
+
+  getManyByUserId = () => ({
+    tags: ['api', 'v1'],
+    description: 'Get all Serie by user',
+    notes: 'Return all Series',
+    handler: this.controller.getManyByUserId,
+    validate: {
+      query: this.validator.queryParams
+    },
+    auth: {
+      strategy: 'jwt',
+      scope: [roles.USER, roles.ADMIN]
+    }
   });
 
   getOne = () => ({
@@ -25,7 +42,10 @@ class SerieHandler {
     description: 'Get one Serie',
     notes: 'Return one Series',
     handler: this.controller.getOne,
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+      scope: [roles.USER, roles.ADMIN]
+    },
     validate: {
       params: {
         id: this.validator.idParam

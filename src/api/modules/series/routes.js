@@ -16,6 +16,11 @@ export default class SerieRoutes {
       },
       {
         method: 'GET',
+        path: '/api/v1/series/studio',
+        options: this.handler.getManyByUserId
+      },
+      {
+        method: 'GET',
         path: '/api/v1/series/{id}',
         options: this.handler.getOne
       },

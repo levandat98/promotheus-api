@@ -7,6 +7,7 @@ import User from '../../models/User';
 import Serie from '../../models/Serie';
 import Genre from '../../models/Genre';
 import Episode from '../../models/Episode';
+import { reactionType } from '../../../constants/common';
 
 class Factory {
   static users(number) {
@@ -118,6 +119,55 @@ class Factory {
         data.push({
           userId: users[i],
           episodeId: _.sample(episodes)
+        });
+      }
+    }
+    return data;
+  }
+
+  static async Favorites() {
+    const data = [];
+    const users = (await User.query().select(['id'])).map(x => x.id);
+    const episodes = (await Episode.query().select(['id'])).map(x => x.id);
+    for (let i = 0; i < users.length; i += 1) {
+      for (let j = 0; j < 4; j += 1) {
+        data.push({
+          userId: users[i],
+          episodeId: _.sample(episodes)
+        });
+      }
+    }
+    return data;
+  }
+
+  static async Reaction() {
+    const data = [];
+    const users = (await User.query().select(['id'])).map(x => x.id);
+    const episodes = (await Episode.query().select(['id'])).map(x => x.id);
+    for (let i = 0; i < users.length; i += 1) {
+      for (let j = 0; j < 4; j += 1) {
+        data.push({
+          userId: users[i],
+          episodeId: _.sample(episodes),
+          type: _.sample([...Object.values(reactionType)])
+        });
+      }
+    }
+    return data;
+  }
+
+  static async Comments() {
+    const data = [];
+    const users = (await User.query().select(['id'])).map(x => x.id);
+    const episodes = (await Episode.query().select(['id'])).map(x => x.id);
+    for (let i = 0; i < episodes.length; i += 1) {
+      for (let j = 0; j < 25; j += 1) {
+        data.push({
+          userId: _.sample(users),
+          episodeId: episodes[i],
+          content: faker.lorem.lines(5),
+          dislike: _.random(0, 1000),
+          like: _.random(0, 1000)
         });
       }
     }

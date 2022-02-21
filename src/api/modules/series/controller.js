@@ -11,6 +11,16 @@ export default class SerieController extends Controller {
     return this.service.getMany(request.query);
   }
 
+  getManyByUserId(request) {
+    const {
+      auth: {
+        credentials: { id: userId }
+      }
+    } = request;
+    request.query.filter = { ...request.query.filter, creatorId: userId };
+    return this.service.getMany(request.query);
+  }
+
   getOne(request) {
     const { id } = request.params;
     return this.service.getOne(id);
@@ -23,7 +33,7 @@ export default class SerieController extends Controller {
       },
       payload
     } = request;
-    return this.service.createOne(userId, payload);
+    return this.service.createOne({ creatorId: userId, ...payload });
   }
 
   updateOne(request) {

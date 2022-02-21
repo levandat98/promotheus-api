@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import BaseModel from './BaseModel';
 import Episode from './Episode';
 import User from './User';
