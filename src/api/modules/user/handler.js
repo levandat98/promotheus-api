@@ -46,6 +46,22 @@ class UserHandler {
     handler: this.controller.pushToQueue,
     auth: 'jwt'
   });
+
+  getFavoriteList = () => ({
+    tags: ['api', 'v1'],
+    description: 'Get favorite of user',
+    notes: 'Return all favorite users',
+    handler: this.controller.getFavoriteList,
+    auth: 'jwt'
+  });
+
+  addToFavoriteList = () => ({
+    tags: ['api', 'v1'],
+    description: 'push to  favorite of user',
+    notes: 'Return push to all favorite users',
+    handler: this.controller.addToFavoriteList,
+    auth: 'jwt'
+  });
 }
 
 export default UserHandler;

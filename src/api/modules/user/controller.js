@@ -22,4 +22,15 @@ export default class UserController extends Controller {
     const { id } = request.params;
     return this.service.pushToQueue(userId, id);
   }
+
+  getFavoriteList(request) {
+    const { id } = request.auth.credentials;
+    return this.service.getFavoriteList(id);
+  }
+
+  addToFavoriteList(request) {
+    const userId = request.auth.credentials.id;
+    const { id } = request.params;
+    return this.service.addToFavoriteList(userId, id);
+  }
 }

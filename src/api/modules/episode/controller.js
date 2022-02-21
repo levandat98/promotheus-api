@@ -21,8 +21,13 @@ export default class EpisodeController extends Controller {
   }
 
   getOne(request) {
-    const { id } = request.params;
-    return this.service.getOne(id);
+    const {
+      params: { id },
+      auth: {
+        credentials: { id: userId, scope }
+      }
+    } = request;
+    return this.service.getOne(id, userId, scope);
   }
 
   createOne(request) {

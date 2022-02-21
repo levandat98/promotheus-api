@@ -28,6 +28,17 @@ export default class UserRoutes {
         method: 'POST',
         path: '/api/v1/users/queue/{id}',
         options: this.handler.pushToQueue
+      },
+
+      {
+        method: 'GET',
+        path: '/api/v1/users/favorite',
+        options: this.handler.getFavoriteList
+      },
+      {
+        method: 'POST',
+        path: '/api/v1/users/favorite/{id}',
+        options: this.handler.addToFavoriteList
       }
     ];
     return routes;
